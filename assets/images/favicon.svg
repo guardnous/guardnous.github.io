@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="sg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f97316"/>
+      <stop offset="100%" stop-color="#ea580c"/>
+    </linearGradient>
+  </defs>
+  <!-- Shield -->
+  <path d="M32 3 L58 13 C58 13 60 35 49 48 C41 58 32 62 32 62 C32 62 23 58 15 48 C4 35 6 13 6 13 Z"
+        fill="url(#sg)" stroke="#fdba74" stroke-width="1" stroke-opacity="0.4"/>
+  <path d="M32 8 L54 16 C54 16 55.5 35 46 46 C40 54 32 57 32 57 C32 57 24 54 18 46 C8.5 35 10 16 10 16 Z"
+        fill="#0c0a09"/>
+  <!-- Simplified neural: center + 3 nodes + lines -->
+  <circle cx="32" cy="30" r="4" fill="url(#sg)"/>
+  <circle cx="32" cy="30" r="1.8" fill="#fff" opacity="0.9"/>
+  <circle cx="22" cy="24" r="2.5" fill="url(#sg)"/>
+  <circle cx="42" cy="24" r="2.5" fill="url(#sg)"/>
+  <circle cx="32" cy="44" r="2.5" fill="url(#sg)"/>
+  <circle cx="22" cy="36" r="2" fill="url(#sg)"/>
+  <circle cx="42" cy="36" r="2" fill="url(#sg)"/>
+  <g stroke="#f97316" stroke-width="1" stroke-opacity="0.5">
+    <line x1="28" y1="28" x2="24" y2="25"/>
+    <line x1="36" y1="28" x2="40" y2="25"/>
+    <line x1="32" y1="34" x2="32" y2="42"/>
+    <line x1="30" y1="32" x2="23" y2="35"/>
+    <line x1="34" y1="32" x2="41" y2="35"/>
+    <line x1="22" y1="34" x2="22" y2="26"/>
+    <line x1="42" y1="34" x2="42" y2="26"/>
+    <line x1="24" y1="37" x2="30" y2="43"/>
+    <line x1="40" y1="37" x2="34" y2="43"/>
+  </g>
+</svg>

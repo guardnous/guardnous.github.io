@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <linearGradient id="shieldGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f97316"/>
+      <stop offset="100%" stop-color="#ea580c"/>
+    </linearGradient>
+    <linearGradient id="innerGlow" x1="0.5" y1="0" x2="0.5" y2="1">
+      <stop offset="0%" stop-color="#fdba74" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#f97316" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="nodeGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fff"/>
+      <stop offset="100%" stop-color="#fdba74"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Shield outer shape -->
+  <path d="M256 28 L462 108 C462 108 472 280 392 388 C332 466 256 492 256 492 C256 492 180 466 120 388 C40 280 50 108 50 108 Z"
+        fill="url(#shieldGrad)" stroke="#fdba74" stroke-width="4" stroke-opacity="0.4"/>
+
+  <!-- Shield inner bevel -->
+  <path d="M256 60 L432 128 C432 128 440 276 370 370 C318 438 256 460 256 460 C256 460 194 438 142 370 C72 276 80 128 80 128 Z"
+        fill="#0c0a09" stroke="#f97316" stroke-width="2" stroke-opacity="0.2"/>
+
+  <!-- Inner subtle glow -->
+  <path d="M256 60 L432 128 C432 128 440 276 370 370 C318 438 256 460 256 460 C256 460 194 438 142 370 C72 276 80 128 80 128 Z"
+        fill="url(#innerGlow)"/>
+
+  <!-- Neural network / brain circuit pattern -->
+  <!-- Central node -->
+  <circle cx="256" cy="240" r="18" fill="url(#shieldGrad)" stroke="#fdba74" stroke-width="2"/>
+  <circle cx="256" cy="240" r="8" fill="#fff" opacity="0.9"/>
+
+  <!-- Top node -->
+  <circle cx="256" cy="150" r="12" fill="url(#shieldGrad)" stroke="#fdba74" stroke-width="1.5"/>
+  <circle cx="256" cy="150" r="5" fill="#fff" opacity="0.8"/>
+
+  <!-- Left nodes -->
+  <circle cx="170" cy="200" r="12" fill="url(#shieldGrad)" stroke="#fdba74" stroke-width="1.5"/>
+  <circle cx="170" cy="200" r="5" fill="#fff" opacity="0.8"/>
+
+  <circle cx="150" cy="290" r="10" fill="url(#shieldGrad)" stroke="#fdba74" stroke-width="1.5"/>
+  <circle cx="150" cy="290" r="4" fill="#fff" opacity="0.8"/>
+
+  <!-- Right nodes -->
+  <circle cx="342" cy="200" r="12" fill="url(#shieldGrad)" stroke="#fdba74" stroke-width="1.5"/>
+  <circle cx="342" cy="200" r="5" fill="#fff" opacity="0.8"/>
+
+  <circle cx="362" cy="290" r="10" fill="url(#shieldGrad)" stroke="#fdba74" stroke-width="1.5"/>
+  <circle cx="362" cy="290" r="4" fill="#fff" opacity="0.8"/>
+
+  <!-- Bottom node -->
+  <circle cx="256" cy="350" r="12" fill="url(#shieldGrad)" stroke="#fdba74" stroke-width="1.5"/>
+  <circle cx="256" cy="350" r="5" fill="#fff" opacity="0.8"/>
+
+  <!-- Secondary smaller nodes -->
+  <circle cx="200" cy="310" r="7" fill="url(#shieldGrad)" stroke="#fdba74" stroke-width="1"/>
+  <circle cx="200" cy="310" r="3" fill="#fff" opacity="0.7"/>
+
+  <circle cx="312" cy="310" r="7" fill="url(#shieldGrad)" stroke="#fdba74" stroke-width="1"/>
+  <circle cx="312" cy="310" r="3" fill="#fff" opacity="0.7"/>
+
+  <circle cx="210" cy="165" r="7" fill="url(#shieldGrad)" stroke="#fdba74" stroke-width="1"/>
+  <circle cx="210" cy="165" r="3" fill="#fff" opacity="0.7"/>
+
+  <circle cx="302" cy="165" r="7" fill="url(#shieldGrad)" stroke="#fdba74" stroke-width="1"/>
+  <circle cx="302" cy="165" r="3" fill="#fff" opacity="0.7"/>
+
+  <!-- Connection lines (neural pathways) -->
+  <g stroke="#f97316" stroke-width="1.5" stroke-opacity="0.5" stroke-linecap="round">
+    <!-- Center to all major nodes -->
+    <line x1="256" y1="222" x2="256" y2="162"/>
+    <line x1="240" y1="228" x2="182" y2="206"/>
+    <line x1="272" y1="228" x2="330" y2="206"/>
+    <line x1="244" y1="254" x2="160" y2="284"/>
+    <line x1="268" y1="254" x2="352" y2="284"/>
+    <line x1="256" y1="258" x2="256" y2="338"/>
+
+    <!-- Cross connections -->
+    <line x1="170" y1="212" x2="150" y2="280"/>
+    <line x1="342" y1="212" x2="362" y2="280"/>
+    <line x1="182" y1="200" x2="210" y2="172"/>
+    <line x1="330" y1="200" x2="302" y2="172"/>
+    <line x1="210" y1="165" x2="249" y2="155"/>
+    <line x1="302" y1="165" x2="263" y2="155"/>
+    <line x1="160" y1="290" x2="193" y2="310"/>
+    <line x1="362" y1="290" x2="319" y2="310"/>
+    <line x1="207" y1="310" x2="244" y2="345"/>
+    <line x1="305" y1="310" x2="268" y2="345"/>
+
+    <!-- Outer ring connections -->
+    <line x1="170" y1="188" x2="210" y2="172"/>
+    <line x1="342" y1="188" x2="302" y2="172"/>
+  </g>
+
+  <!-- Pulse rings on central node -->
+  <circle cx="256" cy="240" r="26" fill="none" stroke="#f97316" stroke-width="1" stroke-opacity="0.25"/>
+  <circle cx="256" cy="240" r="34" fill="none" stroke="#f97316" stroke-width="0.5" stroke-opacity="0.12"/>
+</svg>
