@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GuardNous — AI-Powered Cloud Security & IaC Posture Management</title>
-  <meta name="description" content="Open-source platform that aggregates vulnerabilities from every scanner, prioritizes with AI, and auto-remediates with agentic workflows. Self-hosted, enterprise-grade, zero vendor lock-in.">
-  <meta name="keywords" content="cloud security, IaC security, CSPM, DevSecOps, vulnerability management, open source, SAST, DAST, SCA, SBOM, compliance, AI remediation">
+  <title>GuardNous — Code Scanning, Cloud Posture and Approval-Gated AI Agents</title>
+  <meta name="description" content="Open-source, self-hosted security platform. Scans code and IaC with the scanners you trust, checks live AWS accounts against 44 rules without access keys, and runs AI agents that fix issues only after a person approves the exact change.">
+  <meta name="keywords" content="cloud security, CSPM, cloud posture, IaC security, DevSecOps, vulnerability management, open source, SAST, SCA, SBOM, compliance, CIS AWS, AI agents, human in the loop, OIDC federation">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="GuardNous — AI-Powered Cloud Security Platform">
-  <meta property="og:description" content="Aggregate. Prioritize. Remediate. Open-source security posture management with AI-powered auto-fix.">
+  <meta property="og:title" content="GuardNous — Code Scanning, Cloud Posture and AI Agents">
+  <meta property="og:description" content="Scan code. Check your cloud. Fix with approval. Open source and self-hosted.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://guardnous.github.io">
 
@@ -35,6 +35,8 @@
       </a>
       <ul class="nav-links">
         <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#cloud">Cloud</a></li>
+        <li><a href="#agents">AI Agents</a></li>
         <li><a href="#features">Features</a></li>
         <li><a href="#comparison">Compare</a></li>
         <li><a href="#architecture">Architecture</a></li>
@@ -68,8 +70,9 @@
           Start managing <span class="text-gradient">risk.</span>
         </h1>
         <p>
-          GuardNous aggregates findings from every security scanner, kills duplicates,
-          prioritizes with AI, and auto-remediates — so your team fixes what matters, not what's loudest.
+          GuardNous scans your code with the scanners you already trust, checks your live cloud accounts
+          without access keys, and gives you AI agents that fix what they find, but only after a person
+          approves the exact change.
         </p>
         <div class="hero-actions">
           <a href="https://github.com/guardnous" target="_blank" class="btn-primary">
@@ -83,20 +86,24 @@
         <p class="hero-creator reveal reveal-delay-2">An open-source project by <a href="https://in.linkedin.com/in/harsh-khajgiwale" target="_blank">Harsh Khajgiwale</a></p>
         <div class="hero-stats reveal reveal-delay-2">
           <div class="hero-stat">
-            <div class="hero-stat-value" data-count="9" data-suffix="+">0+</div>
-            <div class="hero-stat-label">Scanner Integrations</div>
+            <div class="hero-stat-value" data-count="9">0</div>
+            <div class="hero-stat-label">Scanner Adapters</div>
           </div>
           <div class="hero-stat">
-            <div class="hero-stat-value" data-count="5">0</div>
-            <div class="hero-stat-label">Compliance Frameworks</div>
+            <div class="hero-stat-value" data-count="44">0</div>
+            <div class="hero-stat-label">AWS Posture Rules</div>
           </div>
           <div class="hero-stat">
-            <div class="hero-stat-value" data-count="40" data-suffix="+">0+</div>
-            <div class="hero-stat-label">Security Models</div>
+            <div class="hero-stat-value" data-count="20">0</div>
+            <div class="hero-stat-label">AI Agents</div>
           </div>
           <div class="hero-stat">
             <div class="hero-stat-value" data-count="72">0</div>
-            <div class="hero-stat-label">RBAC Permissions</div>
+            <div class="hero-stat-label">Agent Tools (Skills)</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-value" data-count="6">0</div>
+            <div class="hero-stat-label">Compliance Frameworks</div>
           </div>
         </div>
       </div>
@@ -108,25 +115,25 @@
     <div class="container">
       <div class="text-center reveal">
         <span class="section-label">How It Works</span>
-        <h2 class="section-title">Aggregate. Prioritize. <span class="text-gradient">Remediate.</span></h2>
+        <h2 class="section-title">Find. Prioritize. <span class="text-gradient">Fix with approval.</span></h2>
         <p class="section-subtitle mx-auto">
-          Three steps to go from scan noise to resolved risk — with AI doing the heavy lifting.
+          Three steps from scan noise to resolved risk. The AI does the legwork; a person makes every decision that changes something.
         </p>
       </div>
       <div class="steps-grid">
         <!-- Step 1 -->
         <div class="step-card reveal reveal-delay-1">
           <div class="step-number">01</div>
-          <h3>Aggregate</h3>
-          <p>Ingest findings from every SAST, DAST, SCA, IaC, and container scanner in your stack — into one unified view.</p>
+          <h3>Find</h3>
+          <p>Scan repositories with SAST, SCA, IaC and secrets scanners, and read the configuration of your live cloud accounts, into one view.</p>
           <ul class="step-features">
             <li>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-              9 scanner adapters, one source of truth
+              9 scanner adapters plus SARIF import
             </li>
             <li>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-              Intelligent deduplication across tools
+              44 posture rules on live AWS accounts
             </li>
             <li>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
@@ -138,7 +145,7 @@
         <div class="step-card reveal reveal-delay-2">
           <div class="step-number">02</div>
           <h3>Prioritize</h3>
-          <p>AI-powered triage layers EPSS, CISA KEV, NVD, and your business context to rank what actually matters.</p>
+          <p>Triage combines severity, exposure, false-positive detection and NVD, GHSA and EPSS data to rank what actually matters.</p>
           <ul class="step-features">
             <li>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
@@ -157,23 +164,307 @@
         <!-- Step 3 -->
         <div class="step-card reveal reveal-delay-3">
           <div class="step-number">03</div>
-          <h3>Remediate</h3>
-          <p>AI agents generate code patches, open branches, and create pull requests — closing the loop automatically.</p>
+          <h3>Fix with approval</h3>
+          <p>An agent prepares the fix and shows the exact change. It is applied only after a person approves it.</p>
           <ul class="step-features">
             <li>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-              Agentic auto-fix with code patches
+              Fix pull requests with the diff shown first
             </li>
             <li>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-              Fix pattern learning (knowledge store)
+              Cloud fixes with one-click rollback
             </li>
             <li>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-              Branch → PR → merge, fully automated
+              A second person approves outside changes
             </li>
           </ul>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== CLOUD ======================== -->
+  <section class="section" id="cloud">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-label">Cloud Posture</span>
+        <h2 class="section-title">Your live cloud, checked <span class="text-gradient">without access keys</span></h2>
+        <p class="section-subtitle mx-auto">
+          Connect a cloud account and GuardNous reads its configuration and checks it against fixed rules.
+          No model decides what is a finding.
+        </p>
+      </div>
+
+      <div class="cloud-grid">
+        <div class="cloud-card reveal reveal-delay-1">
+          <div class="cloud-card-head">
+            <span class="logo-tile"><img src="assets/images/logos/aws.svg" alt="Amazon Web Services logo"></span>
+            <span class="status-pill">Posture + fixes</span>
+          </div>
+          <h3>Amazon Web Services</h3>
+          <p>44 posture rules, 19 mapped to CIS AWS Foundations v1.4.0. Connects without access keys and reads every enabled region. Five fixes with approval and rollback.</p>
+        </div>
+        <div class="cloud-card reveal reveal-delay-2">
+          <div class="cloud-card-head">
+            <span class="logo-tile"><img src="assets/images/logos/azure.svg" alt="Microsoft Azure logo"></span>
+            <span class="status-pill muted">Connect + inventory</span>
+          </div>
+          <h3>Microsoft Azure</h3>
+          <p>Connect a subscription with a service principal and inventory its resources. Posture rules are on the roadmap.</p>
+        </div>
+        <div class="cloud-card reveal reveal-delay-3">
+          <div class="cloud-card-head">
+            <span class="logo-tile"><span class="logo-crop"><img src="assets/images/logos/google-cloud.svg" alt="Google Cloud logo"></span></span>
+            <span class="status-pill muted">Connect + inventory</span>
+          </div>
+          <h3>Google Cloud</h3>
+          <p>Connect a project with a service account and inventory its resources. Posture rules are on the roadmap.</p>
+        </div>
+      </div>
+
+      <div class="split">
+        <div class="reveal">
+          <h3>Connect AWS in three steps. No secret is created.</h3>
+          <p>
+            GuardNous is its own OIDC identity provider. AWS trusts short-lived tokens signed by your installation,
+            the same idea as federated credentials in Azure. Nothing secret is created, copied or stored.
+          </p>
+          <ul class="step-features">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Read-only by default: the role gets the AWS managed <code>SecurityAudit</code> policy</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>A setting that could not be read is reported as "not checked", never as passing</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Findings open, resolve and reopen as the cloud changes</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>One page per account: findings, internet exposure, rules, changes made</span>
+            </li>
+          </ul>
+        </div>
+        <div class="panel reveal reveal-delay-2">
+          <div class="oss-code-header">
+            <span class="oss-code-dot red"></span>
+            <span class="oss-code-dot yellow"></span>
+            <span class="oss-code-dot green"></span>
+          </div>
+          <div class="panel-body">
+            <div class="flow-step">
+              <span class="flow-num">1</span>
+              <div><strong>Enter the 12-digit account ID</strong><span class="flow-text">GuardNous prepares a role name and a one-time subject for this account.</span></div>
+            </div>
+            <div class="flow-step">
+              <span class="flow-num">2</span>
+              <div><strong>Deploy one CloudFormation stack</strong><span class="flow-text">It creates the identity provider and an IAM role that trusts only your GuardNous installation.</span></div>
+            </div>
+            <div class="flow-step">
+              <span class="flow-num">3</span>
+              <div><strong>Connected</strong><span class="flow-text">GuardNous notices the role, runs the first sync, and the findings appear. Set <code>AllowFixes=true</code> on the stack only if you want fixes.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== AI AGENTS ======================== -->
+  <section class="section section-alt" id="agents">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-label">AI Agents</span>
+        <h2 class="section-title">Agents that act. <span class="text-gradient">People who decide.</span></h2>
+        <p class="section-subtitle mx-auto">
+          20 agents with 72 tools answer from your real data. Five of those tools change something,
+          and each one stops and waits for a person.
+        </p>
+      </div>
+
+      <div class="split">
+        <div class="panel reveal">
+          <div class="oss-code-header">
+            <span class="oss-code-dot red"></span>
+            <span class="oss-code-dot yellow"></span>
+            <span class="oss-code-dot green"></span>
+          </div>
+          <div class="panel-body">
+            <div class="chat-msg user">
+              <span class="chat-chip">assets.csv</span><br>
+              Which of these are exposed? Check our AWS account too, and send me a PDF.
+            </div>
+            <div class="chat-msg bot">
+              Two of the three assets in the file are exposed: <strong>bastion-01</strong> has SSH open to the internet
+              and <strong>reports-bucket</strong> is publicly readable. In your connected AWS account nothing is reachable
+              from the internet. The PDF is attached.
+              <div class="chat-file">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                <div>internet-exposure-report.pdf<small>PDF, generated in chat</small></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="reveal reveal-delay-2">
+          <h3>A copilot that answers like a colleague</h3>
+          <p>Bring your own model: OpenAI, Azure OpenAI, Azure AI Foundry, Anthropic or a local Ollama.</p>
+          <ul class="step-features">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Attach PDF, Word, Excel, CSV, JSON, text files or screenshots and ask about them. Text in images and scanned PDFs is read on your server, and secrets in a file are hidden before a model sees them</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Ask for a PDF and the reply carries the download</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Answers come from tools on your findings, scans and cloud inventory; with no data, it says so</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Plain answers: no "thought" traces, no emoji, no narration</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Chat cannot change anything; changes go through agent runs</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="split">
+        <div class="reveal">
+          <h3>Agent runs with an approval for every change</h3>
+          <p>
+            Give an agent a task and a worker runs it in the background. Every model call and tool call is recorded.
+            When the agent wants to change something, the run pauses and shows the exact change.
+          </p>
+          <ul class="step-features">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>The approver sees the real diff or the real cloud change, prepared before asking</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>What runs is what was approved, not whatever the model says next</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Changes outside GuardNous need a second person; no self-approval</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Step and token budgets, and runs survive restarts</span>
+            </li>
+          </ul>
+        </div>
+        <div class="panel reveal reveal-delay-2">
+          <div class="oss-code-header">
+            <span class="oss-code-dot red"></span>
+            <span class="oss-code-dot yellow"></span>
+            <span class="oss-code-dot green"></span>
+          </div>
+          <div class="panel-body">
+            <div class="approval">
+              <strong>Approval needed: open a fix pull request</strong>
+              <div class="diff">
+                <span class="del">- acl = "public-read"</span><br>
+                <span class="add">+ acl = "private"</span><br>
+                <span class="add">+ block_public_acls = true</span>
+              </div>
+              <div class="approval-actions"><span class="ok">Approve</span><span>Reject</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="comparison-table-wrap reveal">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>What an agent may do</th>
+              <th>What the approver sees</th>
+              <th>Who approves</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Triage a finding</td>
+              <td>The finding and the new status</td>
+              <td>The requester or a manager</td>
+            </tr>
+            <tr>
+              <td>Open a fix pull request (GitHub, GitLab, Bitbucket, Azure DevOps)</td>
+              <td>The file and the diff</td>
+              <td>A second person</td>
+            </tr>
+            <tr>
+              <td>Post a message to Slack</td>
+              <td>The exact text</td>
+              <td>A second person</td>
+            </tr>
+            <tr>
+              <td>Fix a cloud misconfiguration (AWS)</td>
+              <td>The change, planned from live state; can be rolled back</td>
+              <td>A second person</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note reveal">Everything else an agent can do only reads data.</p>
+    </div>
+  </section>
+
+  <!-- ======================== PRODUCT TOUR ======================== -->
+  <section class="section" id="tour">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-label">Product Tour</span>
+        <h2 class="section-title">See it <span class="text-gradient">working</span></h2>
+        <p class="section-subtitle mx-auto">
+          Real screens from a running installation, with a connected AWS account and two scanned repositories.
+        </p>
+      </div>
+      <div class="shots-grid">
+        <a class="shot reveal reveal-delay-1" href="assets/images/screenshots/02-dashboard.png" target="_blank">
+          <img src="assets/images/screenshots/02-dashboard.png" alt="GuardNous dashboard with security score, open findings, check pass rate and severity breakdown" loading="lazy" width="1440" height="900">
+          <span class="shot-caption"><strong>Dashboard</strong> Score, open findings, and how many checks passed</span>
+        </a>
+        <a class="shot reveal reveal-delay-2" href="assets/images/screenshots/09-cloud-connectors.png" target="_blank">
+          <img src="assets/images/screenshots/09-cloud-connectors.png" alt="Cloud Connectors page with AWS, Azure and Google Cloud cards" loading="lazy" width="1440" height="900">
+          <span class="shot-caption"><strong>Cloud Connectors</strong> One card per cloud; accounts grouped below</span>
+        </a>
+        <a class="shot reveal reveal-delay-1" href="assets/images/screenshots/12-cloud-posture-account.png" target="_blank">
+          <img src="assets/images/screenshots/12-cloud-posture-account.png" alt="Cloud posture page of one AWS account with failing rules" loading="lazy" width="1440" height="900">
+          <span class="shot-caption"><strong>Cloud Posture</strong> One account: findings, exposure, failing rules</span>
+        </a>
+        <a class="shot reveal reveal-delay-2" href="assets/images/screenshots/17-agent-run-approval.png" target="_blank">
+          <img src="assets/images/screenshots/17-agent-run-approval.png" alt="Agent run waiting for approval of a fix pull request" loading="lazy" width="1440" height="900">
+          <span class="shot-caption"><strong>Agent Runs</strong> A run paused for approval of the exact change</span>
+        </a>
+        <a class="shot reveal reveal-delay-1" href="assets/images/screenshots/16-ai-copilot.png" target="_blank">
+          <img src="assets/images/screenshots/16-ai-copilot.png" alt="AI Copilot chat with an attached file and a PDF download" loading="lazy" width="1440" height="900">
+          <span class="shot-caption"><strong>AI Copilot</strong> A question about an attached file, answered with a PDF</span>
+        </a>
+        <a class="shot reveal reveal-delay-2" href="assets/images/screenshots/03-integrations.png" target="_blank">
+          <img src="assets/images/screenshots/03-integrations.png" alt="VCS Integrations page with GitHub, GitLab, Bitbucket and Azure DevOps" loading="lazy" width="1440" height="900">
+          <span class="shot-caption"><strong>VCS Integrations</strong> GitHub, GitLab, Bitbucket and Azure DevOps</span>
+        </a>
+      </div>
+      <p class="table-note reveal">Account numbers and user names in the screenshots are masked.</p>
+
+      <div class="logo-row reveal">
+        <span class="logo-row-label">Scans repositories on</span>
+        <span class="logo-chip"><span class="logo-tile small"><img src="assets/images/logos/github.svg" alt="GitHub logo"></span>GitHub</span>
+        <span class="logo-chip"><span class="logo-tile small"><img src="assets/images/logos/gitlab.svg" alt="GitLab logo"></span>GitLab</span>
+        <span class="logo-chip"><span class="logo-tile small"><img src="assets/images/logos/bitbucket.svg" alt="Bitbucket logo"></span>Bitbucket</span>
+        <span class="logo-chip"><span class="logo-tile small"><img src="assets/images/logos/azure-devops.svg" alt="Azure DevOps logo"></span>Azure DevOps</span>
       </div>
     </div>
   </section>
@@ -192,12 +483,12 @@
         <div class="feature-card reveal reveal-delay-1">
           <div class="feature-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
           <h3>Multi-Scanner Orchestration</h3>
-          <p>Semgrep, Trivy, Bandit, Checkov, Grype, ESLint, Gitleaks, tfsec, KICS — run all scanners in parallel with unified results.</p>
+          <p>Checkov, Trivy, Semgrep, Gitleaks, tfsec plus native Terraform, CloudFormation, Bicep &amp; Secrets scanners — run all in parallel with unified results.</p>
         </div>
         <div class="feature-card reveal reveal-delay-2">
           <div class="feature-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4v1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2V6a4 4 0 0 1 4-4z"/><circle cx="9" cy="9" r="1"/><circle cx="15" cy="9" r="1"/><path d="M8 14v3a4 4 0 0 0 8 0v-3"/></svg></div>
           <h3>AI-Powered Triage</h3>
-          <p>Multi-provider LLM support (OpenAI, Azure, Anthropic, Ollama). Three-layer pipeline with prompt registry and guardrails engine.</p>
+          <p>Bring your own model (OpenAI, Azure OpenAI, Azure AI Foundry, Anthropic, Ollama). Three-layer pipeline with prompt registry and guardrails engine.</p>
         </div>
         <div class="feature-card reveal reveal-delay-3">
           <div class="feature-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
@@ -207,17 +498,17 @@
         <div class="feature-card reveal reveal-delay-1">
           <div class="feature-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
           <h3>SBOM & Dependency Analysis</h3>
-          <p>Analyze 9 manifest types, generate CycloneDX SBOMs, track license compliance, and sync with NVD + GHSA + EPSS databases.</p>
+          <p>Analyze 9 manifest types, download a CycloneDX SBOM per assessment, optionally check dependency licences, and sync with NVD + GHSA + EPSS databases.</p>
         </div>
         <div class="feature-card reveal reveal-delay-2">
           <div class="feature-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
           <h3>Enterprise Multi-Tenancy</h3>
-          <p>Tenant → Organization → User hierarchy. 72 RBAC permissions, 7 roles, per-tenant DB isolation, org switcher, TOTP 2FA.</p>
+          <p>Tenant → Organization → User hierarchy. 72 RBAC permissions, 7 roles, every row isolated by tenant and organization, org switcher, TOTP 2FA.</p>
         </div>
         <div class="feature-card reveal reveal-delay-3">
           <div class="feature-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
           <h3>Policy & Governance</h3>
-          <p>Define 20 security policies with structured matching, exemption workflows, severity thresholds, and audit trails.</p>
+          <p>21 built-in security policies, plus your own, with structured matching, exemption workflows, severity thresholds, and audit trails.</p>
         </div>
         <div class="feature-card reveal reveal-delay-1">
           <div class="feature-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
@@ -233,6 +524,21 @@
           <div class="feature-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
           <h3>Scheduled Scans & Reports</h3>
           <p>Cron-based scan scheduling, automated report delivery via branded HTML email, Celery workers with beat scheduler.</p>
+        </div>
+        <div class="feature-card reveal reveal-delay-1">
+          <div class="feature-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></div>
+          <h3>Cloud Posture</h3>
+          <p>44 rules on live AWS accounts: root MFA, public buckets, open SSH and RDP, unencrypted storage, logging gaps. One page per account, with an internet exposure view.</p>
+        </div>
+        <div class="feature-card reveal reveal-delay-2">
+          <div class="feature-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.78 7.78 5.5 5.5 0 0 1 7.78-7.78zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg></div>
+          <h3>Keyless Cloud Connection</h3>
+          <p>Connect AWS through OIDC federation and one CloudFormation stack. No access key is created, copied or stored.</p>
+        </div>
+        <div class="feature-card reveal reveal-delay-3">
+          <div class="feature-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+          <h3>Approval-Gated Agents</h3>
+          <p>Fix pull requests, Slack messages and cloud fixes run only after a person approves the exact change. Cloud fixes can be rolled back.</p>
         </div>
       </div>
     </div>
@@ -268,18 +574,39 @@
               <td><span class="check">✓</span> 9 adapters</td>
             </tr>
             <tr>
-              <td>AI-powered triage & auto-fix</td>
+              <td>AI triage on your own model</td>
               <td><span class="cross">✗</span></td>
-              <td><span class="partial">~</span> Limited</td>
+              <td><span class="partial">~</span> Vendor model</td>
               <td><span class="cross">✗</span></td>
-              <td><span class="check">✓</span> Multi-LLM agentic</td>
+              <td><span class="check">✓</span> 5 providers, or local</td>
+            </tr>
+            <tr>
+              <td>Cloud posture on live accounts</td>
+              <td><span class="cross">✗</span></td>
+              <td><span class="check">✓</span> Multi-cloud</td>
+              <td><span class="cross">✗</span> IaC only</td>
+              <td><span class="check">✓</span> AWS, 44 rules</td>
+            </tr>
+            <tr>
+              <td>Cloud connection without access keys</td>
+              <td><span class="cross">✗</span></td>
+              <td><span class="check">✓</span></td>
+              <td><span class="cross">✗</span></td>
+              <td><span class="check">✓</span> OIDC federation</td>
+            </tr>
+            <tr>
+              <td>Human approval for every AI action</td>
+              <td><span class="cross">✗</span></td>
+              <td><span class="partial">~</span> Varies</td>
+              <td><span class="cross">✗</span></td>
+              <td><span class="check">✓</span> Exact change shown</td>
             </tr>
             <tr>
               <td>IaC scanning (Terraform, K8s, Docker)</td>
               <td><span class="partial">~</span> Import</td>
               <td><span class="check">✓</span></td>
               <td><span class="check">✓</span> Primary</td>
-              <td><span class="check">✓</span> Checkov + tfsec + KICS</td>
+              <td><span class="check">✓</span> Checkov + tfsec + native IaC scanners</td>
             </tr>
             <tr>
               <td>SBOM generation (CycloneDX)</td>
@@ -293,7 +620,7 @@
               <td><span class="partial">~</span> 3</td>
               <td><span class="check">✓</span> Many</td>
               <td><span class="check">✓</span> CIS only</td>
-              <td><span class="check">✓</span> 6 frameworks, 70+ controls</td>
+              <td><span class="check">✓</span> 6 frameworks, 92 controls</td>
             </tr>
             <tr>
               <td>Multi-tenant RBAC</td>
@@ -307,14 +634,14 @@
               <td><span class="check">✓</span></td>
               <td><span class="cross">✗</span> SaaS only</td>
               <td><span class="check">✓</span></td>
-              <td><span class="check">✓</span> Docker + Helm</td>
+              <td><span class="check">✓</span> Docker Compose (Kubernetes planned)</td>
             </tr>
             <tr>
-              <td>Agentic remediation (code → branch → PR)</td>
+              <td>AI fix pull requests</td>
               <td><span class="cross">✗</span></td>
               <td><span class="partial">~</span> Basic</td>
               <td><span class="cross">✗</span></td>
-              <td><span class="check">✓</span> Full pipeline</td>
+              <td><span class="check">✓</span> Diff approved first (GitHub, GitLab, Bitbucket, Azure DevOps)</td>
             </tr>
             <tr>
               <td>Cost</td>
@@ -350,7 +677,8 @@
               <div class="arch-item">TailwindCSS</div>
               <div class="arch-item">shadcn/ui</div>
               <div class="arch-item">Recharts</div>
-              <div class="arch-item">26 Pages</div>
+              <div class="arch-item">41 Pages</div>
+              <div class="arch-item">Light + Dark</div>
             </div>
           </div>
           <div class="arch-connector"></div>
@@ -362,6 +690,7 @@
               <div class="arch-item">72 RBAC Permissions</div>
               <div class="arch-item">REST API</div>
               <div class="arch-item">Multi-Tenant</div>
+              <div class="arch-item">OIDC Issuer</div>
             </div>
           </div>
           <div class="arch-connector"></div>
@@ -376,6 +705,32 @@
               <div class="arch-item">Compliance Mapper</div>
               <div class="arch-item">Risk Scorer</div>
               <div class="arch-item">Knowledge Store</div>
+              <div class="arch-item">Cloud Posture Engine</div>
+            </div>
+          </div>
+          <div class="arch-connector"></div>
+          <div class="arch-layer">
+            <div class="arch-layer-label">AI Agents</div>
+            <div class="arch-layer-items">
+              <div class="arch-item">20 Agents</div>
+              <div class="arch-item">72 Tools</div>
+              <div class="arch-item">Durable Agent Runs</div>
+              <div class="arch-item">Approvals</div>
+              <div class="arch-item">Fix PRs</div>
+              <div class="arch-item">Chat Attachments</div>
+              <div class="arch-item">PDF Export</div>
+              <div class="arch-item">Guardrails</div>
+              <div class="arch-item">Bring Your Own Model</div>
+            </div>
+          </div>
+          <div class="arch-connector"></div>
+          <div class="arch-layer">
+            <div class="arch-layer-label">Clouds</div>
+            <div class="arch-layer-items">
+              <div class="arch-item">AWS (posture + fixes)</div>
+              <div class="arch-item">Azure (inventory)</div>
+              <div class="arch-item">Google Cloud (inventory)</div>
+              <div class="arch-item">Keyless via OIDC</div>
             </div>
           </div>
           <div class="arch-connector"></div>
@@ -384,13 +739,13 @@
             <div class="arch-layer-items">
               <div class="arch-item">Semgrep</div>
               <div class="arch-item">Trivy</div>
-              <div class="arch-item">Bandit</div>
-              <div class="arch-item">Checkov</div>
-              <div class="arch-item">Grype</div>
-              <div class="arch-item">ESLint</div>
               <div class="arch-item">Gitleaks</div>
+              <div class="arch-item">Checkov</div>
               <div class="arch-item">tfsec</div>
-              <div class="arch-item">KICS</div>
+              <div class="arch-item">TF Scanner</div>
+              <div class="arch-item">CFN Scanner</div>
+              <div class="arch-item">Bicep Scanner</div>
+              <div class="arch-item">Secrets Scanner</div>
             </div>
           </div>
           <div class="arch-connector"></div>
@@ -401,7 +756,7 @@
               <div class="arch-item">Redis 7</div>
               <div class="arch-item">Celery Workers</div>
               <div class="arch-item">40+ Models</div>
-              <div class="arch-item">13 Migrations</div>
+              <div class="arch-item">33 Migrations</div>
             </div>
           </div>
           <div class="arch-connector"></div>
@@ -409,7 +764,7 @@
             <div class="arch-layer-label">Deployment</div>
             <div class="arch-layer-items">
               <div class="arch-item">Docker Compose</div>
-              <div class="arch-item">Helm Chart</div>
+              <div class="arch-item">Helm Chart (preview)</div>
               <div class="arch-item">HPA Autoscaling</div>
               <div class="arch-item">BYOD (Bring Your DB)</div>
             </div>
@@ -430,7 +785,7 @@
         <div class="oss-text">
           <h3>Self-hosted. Transparent. No vendor lock-in.</h3>
           <p>
-            GuardNous runs on your infrastructure — your cloud, your Kubernetes cluster, your rules.
+            GuardNous runs on your infrastructure — your cloud, your servers, your rules.
             No data leaves your environment. No per-seat pricing surprises. No feature gates behind enterprise paywalls.
           </p>
           <p>
@@ -450,12 +805,12 @@
             <span class="oss-code-dot green"></span>
           </div>
           <div class="oss-code-body">
-            <span class="comment"># Clone and run in under 5 minutes</span><br>
-            <span class="cmd">$</span> git clone https://github.com/guardnous/guard-nous.git<br>
-            <span class="cmd">$</span> cd guard-nous<br>
+            <span class="comment"># Clone and run</span><br>
+            <span class="cmd">$</span> git clone https://github.com/guardnous/guardnous.git<br>
+            <span class="cmd">$</span> cd guardnous<br>
             <br>
-            <span class="comment"># Start all 6 services</span><br>
-            <span class="cmd">$</span> docker compose up <span class="flag">-d</span><br>
+            <span class="comment"># Generate keys and start all 6 services</span><br>
+            <span class="cmd">$</span> ./scripts/setup.sh<br>
             <br>
             <span class="comment"># Open the dashboard</span><br>
             <span class="cmd">$</span> open http://localhost:7003<br>
@@ -497,26 +852,28 @@
             GuardNous
           </div>
           <p class="footer-desc">
-            AI-powered open-source cloud security &amp; IaC posture management platform.
-            Built for teams that ship fast and need to stay secure.
+            Open-source code scanning, cloud posture and approval-gated AI agents.
+            Self-hosted, for teams that ship fast and need to stay secure.
           </p>
         </div>
         <div class="footer-col">
           <h4>Product</h4>
           <ul>
+            <li><a href="#cloud">Cloud Posture</a></li>
+            <li><a href="#agents">AI Agents</a></li>
             <li><a href="#features">Features</a></li>
             <li><a href="#architecture">Architecture</a></li>
             <li><a href="#comparison">Compare</a></li>
-            <li><a href="https://github.com/guardnous" target="_blank">Documentation</a></li>
+            <li><a href="https://github.com/guardnous/guardnous#readme" target="_blank">Documentation</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Community</h4>
           <ul>
             <li><a href="https://github.com/guardnous" target="_blank">GitHub</a></li>
-            <li><a href="https://github.com/guardnous/guard-nous/issues" target="_blank">Report an Issue</a></li>
-            <li><a href="https://github.com/guardnous/guard-nous/blob/main/CONTRIBUTING.md" target="_blank">Contributing</a></li>
-            <li><a href="https://github.com/guardnous/guard-nous/blob/main/SECURITY.md" target="_blank">Security Policy</a></li>
+            <li><a href="https://github.com/guardnous/guardnous/issues" target="_blank">Report an Issue</a></li>
+            <li><a href="https://github.com/guardnous/guardnous/blob/main/CONTRIBUTING.md" target="_blank">Contributing</a></li>
+            <li><a href="https://github.com/guardnous/guardnous/blob/main/SECURITY.md" target="_blank">Security Policy</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -531,7 +888,7 @@
       </div>
       <div class="footer-bottom">
         <div class="footer-copyright">
-          <span>&copy; 2026 GuardNous. Open source under MIT License.</span>
+          <span>&copy; 2026 GuardNous. Open source under the Apache 2.0 License.</span>
           <span class="footer-creator">Created by <a href="https://in.linkedin.com/in/harsh-khajgiwale" target="_blank">Harsh Khajgiwale</a></span>
         </div>
         <div class="footer-socials">
