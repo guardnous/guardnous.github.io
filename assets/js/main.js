@@ -145,28 +145,36 @@ document.addEventListener('DOMContentLoaded', () => {
     box.setAttribute('aria-modal', 'true');
     box.setAttribute('aria-label', 'Screenshot viewer');
     box.innerHTML =
-      '<div class="lightbox-bar">' +
-        '<span class="lightbox-title"></span>' +
-        '<button type="button" class="lightbox-btn" data-act="prev" aria-label="Previous screenshot">&#8249;</button>' +
-        '<button type="button" class="lightbox-btn" data-act="next" aria-label="Next screenshot">&#8250;</button>' +
-        '<button type="button" class="lightbox-btn" data-act="out" aria-label="Zoom out">&minus;</button>' +
-        '<span class="lightbox-zoom" aria-live="polite"></span>' +
-        '<button type="button" class="lightbox-btn" data-act="in" aria-label="Zoom in">+</button>' +
-        '<button type="button" class="lightbox-btn" data-act="fit" aria-label="Fit to screen">&#10530;</button>' +
-        '<button type="button" class="lightbox-btn" data-act="close" aria-label="Close">&times;</button>' +
+      '<button type="button" class="lightbox-btn lightbox-nav prev" data-act="prev" aria-label="Previous screenshot">&#8249;</button>' +
+      '<div class="lightbox-card">' +
+        '<div class="lightbox-bar">' +
+          '<span class="lightbox-title"></span>' +
+          '<span class="lightbox-count"></span>' +
+          '<button type="button" class="lightbox-btn" data-act="close" aria-label="Close">&times;</button>' +
+        '</div>' +
+        '<div class="lightbox-stage"><img alt=""></div>' +
+        '<div class="lightbox-foot">' +
+          '<span class="lightbox-desc"></span>' +
+          '<button type="button" class="lightbox-btn" data-act="out" aria-label="Zoom out">&minus;</button>' +
+          '<span class="lightbox-zoom" aria-live="polite"></span>' +
+          '<button type="button" class="lightbox-btn" data-act="in" aria-label="Zoom in">+</button>' +
+          '<button type="button" class="lightbox-btn" data-act="fit" aria-label="Fit to window">&#10530;</button>' +
+        '</div>' +
       '</div>' +
-      '<div class="lightbox-stage"><img alt=""></div>';
+      '<button type="button" class="lightbox-btn lightbox-nav next" data-act="next" aria-label="Next screenshot">&#8250;</button>';
     document.body.appendChild(box);
 
     const stage = box.querySelector('.lightbox-stage');
     const img = stage.querySelector('img');
     const title = box.querySelector('.lightbox-title');
+    const count = box.querySelector('.lightbox-count');
+    const desc = box.querySelector('.lightbox-desc');
     const zoomLabel = box.querySelector('.lightbox-zoom');
     let index = 0, zoom = 1, opener = null;
 
     // zoom 1 = the whole image fits the stage; larger values scroll.
     const fitWidth = () => {
-      const w = stage.clientWidth - 32, h = stage.clientHeight - 32;
+      const w = stage.clientWidth, h = stage.clientHeight;
       const ratio = (img.naturalWidth || 16) / (img.naturalHeight || 10);
       return Math.min(w, h * ratio, img.naturalWidth || w);
     };
@@ -183,7 +191,10 @@ document.addEventListener('DOMContentLoaded', () => {
       img.onload = apply;
       img.src = shot.getAttribute('href');
       img.alt = shot.querySelector('img').alt;
-      title.textContent = shot.querySelector('.shot-caption').textContent.trim();
+      const name = shot.querySelector('.shot-caption strong').textContent.trim();
+      title.textContent = name.replace(/^\d+\.\s*/, '');
+      desc.textContent = shot.querySelector('.shot-caption').textContent.replace(name, '').trim();
+      count.textContent = (index + 1) + ' / ' + shots.length;
       apply();
     };
     const open = (i, from) => {
@@ -196,7 +207,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const close = () => {
       box.classList.remove('open');
       document.body.classList.remove('lightbox-open');
-      img.removeAttribute('src');
       if (opener) opener.focus();
     };
 
@@ -211,8 +221,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (a === 'in') setZoom(zoom + 0.5);
         if (a === 'out') setZoom(zoom - 0.5);
         if (a === 'fit') setZoom(1);
-      } else if (e.target === stage) {
-        close();
+      } else if (e.target === box) {
+        close(); // a click on the dimmed page, outside the card
       }
     });
     img.addEventListener('click', () => { if (!moved) setZoom(zoom > 1 ? 1 : 2); });
