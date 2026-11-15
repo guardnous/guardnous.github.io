@@ -66,7 +66,7 @@ img { max-width: 100%; height: auto; }
 }
 
 .section {
-  padding: 7rem 0;
+  padding: 4.5rem 0; /* one value for every section, so the gaps between them are even */
   position: relative;
 }
 
@@ -1077,7 +1077,48 @@ img { max-width: 100%; height: auto; }
   background: var(--dark-800);
   transition: all 0.4s var(--transition-smooth);
 }
+.shot { cursor: zoom-in; }
 .shot:hover { border-color: rgba(249, 115, 22, 0.35); transform: translateY(-3px); }
+
+/* === SCREENSHOT VIEWER === */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: none;
+  flex-direction: column;
+  background: rgba(8, 6, 5, 0.94);
+}
+.lightbox.open { display: flex; }
+.lightbox-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--glass-border);
+}
+.lightbox-title { flex: 1; min-width: 0; color: var(--white); font-weight: 600; font-size: 0.95rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lightbox-zoom { min-width: 3.5rem; text-align: center; color: var(--gray-400); font-size: 0.85rem; font-variant-numeric: tabular-nums; }
+.lightbox-btn {
+  width: 2.4rem;
+  height: 2.4rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  background: var(--dark-800);
+  color: var(--white);
+  font-size: 1.15rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.lightbox-btn:hover, .lightbox-btn:focus-visible { border-color: rgba(249, 115, 22, 0.6); outline: none; }
+.lightbox-stage { flex: 1; overflow: auto; display: flex; padding: 1rem; }
+.lightbox-stage img { margin: auto; display: block; max-width: none; height: auto; border-radius: 8px; cursor: zoom-in; }
+.lightbox-stage.zoomed img { cursor: grab; }
+.lightbox-stage.dragging img { cursor: grabbing; }
+body.lightbox-open { overflow: hidden; }
 .shot img { display: block; width: 100%; height: auto; }
 .shot-caption {
   display: block;
@@ -1133,7 +1174,7 @@ img { max-width: 100%; height: auto; }
   .hero h1 { font-size: 2.5rem; }
   .hero-stats { flex-direction: column; gap: 1.5rem; }
   .features-grid { grid-template-columns: 1fr; }
-  .section { padding: 4rem 0; }
+  .section { padding: 3rem 0; }
   .comparison-table-wrap { overflow-x: auto; }
   .comparison-table { min-width: 600px; }
   .footer-grid { grid-template-columns: 1fr; }
