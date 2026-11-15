@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 830" width="1200" height="830" role="img" aria-labelledby="t d" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="t">GuardNous architecture</title>
+  <desc id="d">Requests enter through the web UI, webhooks or SARIF import, pass the API, and reach three engines: code scanning, cloud posture and AI agents. Any change waits at a human approval gate. Findings and governance sit on PostgreSQL, Redis and Celery workers.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0L10 5L0 10z" fill="#94a3b8"/>
+    </marker>
+    <filter id="shadow" x="-5%" y="-10%" width="110%" height="130%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="830" rx="16" fill="#ffffff"/>
+  <rect x="0.5" y="0.5" width="1199" height="829" rx="16" fill="none" stroke="#e2e8f0"/>
+
+  <text x="60" y="44" font-size="20" font-weight="700" fill="#0f172a">GuardNous architecture</text>
+  <text x="1140" y="44" font-size="13" fill="#64748b" text-anchor="end">Self-hosted · one Docker Compose stack</text>
+
+  <!-- Row A: how work enters -->
+  <g class="box" filter="url(#shadow)">
+    <rect x="60" y="66" width="340" height="72" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="230" y="97" font-size="15" font-weight="600" fill="#0f172a" text-anchor="middle">Web UI</text>
+    <text x="230" y="119" font-size="12.5" fill="#475569" text-anchor="middle">Next.js 14 · 41 pages · light and dark</text>
+  </g>
+  <g class="box" filter="url(#shadow)">
+    <rect x="430" y="66" width="340" height="72" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="600" y="97" font-size="15" font-weight="600" fill="#0f172a" text-anchor="middle">Webhooks and CI</text>
+    <text x="600" y="119" font-size="12.5" fill="#475569" text-anchor="middle">GitHub · GitLab · Bitbucket · Azure DevOps</text>
+  </g>
+  <g class="box" filter="url(#shadow)">
+    <rect x="800" y="66" width="340" height="72" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="970" y="97" font-size="15" font-weight="600" fill="#0f172a" text-anchor="middle">SARIF import</text>
+    <text x="970" y="119" font-size="12.5" fill="#475569" text-anchor="middle">Results from any scanner that writes SARIF</text>
+  </g>
+
+  <path d="M230 138V170" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M600 138V170" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M970 138V170" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Row B: API -->
+  <g class="box" filter="url(#shadow)">
+    <rect x="60" y="174" width="1080" height="72" rx="10" fill="#0f172a" stroke="#0f172a"/>
+    <text x="600" y="205" font-size="15" font-weight="600" fill="#ffffff" text-anchor="middle">API (FastAPI)</text>
+    <text x="600" y="227" font-size="12.5" fill="#cbd5e1" text-anchor="middle">Sign-in with two-factor · 72 permissions, 7 roles · every row scoped to its tenant and organization</text>
+  </g>
+
+  <path d="M230 246V278" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M600 246V278" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M970 246V278" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Row C: three engines -->
+  <g class="box" filter="url(#shadow)">
+    <rect x="60" y="282" width="340" height="196" rx="10" fill="#eff6ff" stroke="#93c5fd"/>
+    <rect x="60" y="282" width="340" height="6" rx="3" fill="#2563eb"/>
+    <text x="84" y="318" font-size="16" font-weight="700" fill="#1e3a8a">Code scanning</text>
+    <text x="84" y="346" font-size="12.5" fill="#334155">9 scanner adapters, results in one format</text>
+    <text x="84" y="370" font-size="12.5" fill="#334155">Semgrep · Trivy · Checkov · tfsec · Gitleaks</text>
+    <text x="84" y="394" font-size="12.5" fill="#334155">Built in: Terraform, CloudFormation, Bicep, secrets</text>
+    <text x="84" y="418" font-size="12.5" fill="#334155">Policy engine with 21 built-in policies</text>
+    <text x="84" y="442" font-size="12.5" fill="#334155">SBOM export (CycloneDX 1.5)</text>
+    <text x="84" y="466" font-size="12.5" fill="#334155">Scanner binaries checked before every scan</text>
+  </g>
+  <g class="box" filter="url(#shadow)">
+    <rect x="430" y="282" width="340" height="196" rx="10" fill="#f0fdfa" stroke="#5eead4"/>
+    <rect x="430" y="282" width="340" height="6" rx="3" fill="#0d9488"/>
+    <text x="454" y="318" font-size="16" font-weight="700" fill="#134e4a">Cloud posture</text>
+    <text x="454" y="346" font-size="12.5" fill="#334155">AWS connected without access keys (OIDC)</text>
+    <text x="454" y="370" font-size="12.5" fill="#334155">44 rules, 19 mapped to CIS AWS v1.4.0</text>
+    <text x="454" y="394" font-size="12.5" fill="#334155">Internet exposure view per account</text>
+    <text x="454" y="418" font-size="12.5" fill="#334155">5 fixes, each with a rollback</text>
+    <text x="454" y="442" font-size="12.5" fill="#334155">Azure and Google Cloud: connect and inventory</text>
+    <text x="454" y="466" font-size="12.5" fill="#334155">Read-only role by default</text>
+  </g>
+  <g class="box" filter="url(#shadow)">
+    <rect x="800" y="282" width="340" height="196" rx="10" fill="#f5f3ff" stroke="#c4b5fd"/>
+    <rect x="800" y="282" width="340" height="6" rx="3" fill="#7c3aed"/>
+    <text x="824" y="318" font-size="16" font-weight="700" fill="#4c1d95">AI agents</text>
+    <text x="824" y="346" font-size="12.5" fill="#334155">20 agents · 72 tools on your real data</text>
+    <text x="824" y="370" font-size="12.5" fill="#334155">Your model: OpenAI, Azure, Anthropic or Ollama</text>
+    <text x="824" y="394" font-size="12.5" fill="#334155">Chat with file attachments and PDF export</text>
+    <text x="824" y="418" font-size="12.5" fill="#334155">Background runs with step and token budgets</text>
+    <text x="824" y="442" font-size="12.5" fill="#334155">Guardrails on input and output</text>
+    <text x="824" y="466" font-size="12.5" fill="#334155">Every model call and tool call recorded</text>
+  </g>
+
+  <path d="M230 478V510" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M600 478V510" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M970 478V510" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Row D: approval gate -->
+  <g class="box" filter="url(#shadow)">
+    <rect x="60" y="514" width="1080" height="72" rx="10" fill="#fff7ed" stroke="#fb923c" stroke-width="1.5"/>
+    <text x="600" y="545" font-size="15" font-weight="700" fill="#9a3412" text-anchor="middle">Human approval gate</text>
+    <text x="600" y="567" font-size="12.5" fill="#7c2d12" text-anchor="middle">A fix pull request, a cloud fix, a Slack message or a triage decision waits until a person approves the exact change</text>
+  </g>
+
+  <path d="M600 586V614" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Row E: findings and governance -->
+  <g class="box" filter="url(#shadow)">
+    <rect x="60" y="618" width="1080" height="88" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="600" y="648" font-size="15" font-weight="600" fill="#0f172a" text-anchor="middle">Findings and governance</text>
+    <text x="600" y="670" font-size="12.5" fill="#475569" text-anchor="middle">Triage with SLA deadlines · decisions kept across rescans · risk score · PDF reports</text>
+    <text x="600" y="690" font-size="12.5" fill="#475569" text-anchor="middle">6 compliance frameworks, 92 controls · vulnerability data from NVD, GHSA and EPSS · audit log</text>
+  </g>
+
+  <path d="M230 706V734" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M600 706V734" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M970 706V734" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Row F: storage and workers -->
+  <g class="box" filter="url(#shadow)">
+    <rect x="60" y="738" width="340" height="64" rx="10" fill="#f1f5f9" stroke="#cbd5e1"/>
+    <text x="230" y="766" font-size="14" font-weight="600" fill="#0f172a" text-anchor="middle">PostgreSQL 16</text>
+    <text x="230" y="786" font-size="12.5" fill="#475569" text-anchor="middle">All data · 33 migrations applied at startup</text>
+  </g>
+  <g class="box" filter="url(#shadow)">
+    <rect x="430" y="738" width="340" height="64" rx="10" fill="#f1f5f9" stroke="#cbd5e1"/>
+    <text x="600" y="766" font-size="14" font-weight="600" fill="#0f172a" text-anchor="middle">Redis 7</text>
+    <text x="600" y="786" font-size="12.5" fill="#475569" text-anchor="middle">Cache · job queue · agent state</text>
+  </g>
+  <g class="box" filter="url(#shadow)">
+    <rect x="800" y="738" width="340" height="64" rx="10" fill="#f1f5f9" stroke="#cbd5e1"/>
+    <text x="970" y="766" font-size="14" font-weight="600" fill="#0f172a" text-anchor="middle">Celery workers and scheduler</text>
+    <text x="970" y="786" font-size="12.5" fill="#475569" text-anchor="middle">Scans · cloud sync · agent runs · reports</text>
+  </g>
+</svg>

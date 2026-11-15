@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
           '<button type="button" class="lightbox-btn" data-act="out" aria-label="Zoom out">&minus;</button>' +
           '<span class="lightbox-zoom" aria-live="polite"></span>' +
           '<button type="button" class="lightbox-btn" data-act="in" aria-label="Zoom in">+</button>' +
-          '<button type="button" class="lightbox-btn" data-act="fit" aria-label="Fit to window">&#10530;</button>' +
+          '<button type="button" class="lightbox-btn lightbox-max" data-act="max" aria-label="Enlarge" aria-pressed="false" title="Enlarge">&#10530;</button>' +
         '</div>' +
       '</div>' +
       '<button type="button" class="lightbox-btn lightbox-nav next" data-act="next" aria-label="Next screenshot">&#8250;</button>';
@@ -262,6 +262,23 @@ document.addEventListener('DOMContentLoaded', () => {
       count.textContent = (index + 1) + ' / ' + shots.length;
       apply();
     };
+    // Enlarge: the popup grows to fill the screen; pressing again restores it.
+    const maxBtn = box.querySelector('.lightbox-max');
+    const setMax = (on) => {
+      box.classList.toggle('is-max', on);
+      maxBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      maxBtn.setAttribute('aria-label', on ? 'Restore size' : 'Enlarge');
+      maxBtn.title = on ? 'Restore size' : 'Enlarge';
+      maxBtn.innerHTML = on ? '&#10529;' : '&#10530;';
+      zoom = 1;
+      apply();
+      // On a tall, narrow screen the image cannot grow sideways, so fill the
+      // height instead and let it be dragged left and right.
+      if (on) {
+        const fill = stage.clientHeight / (img.getBoundingClientRect().height || 1);
+        if (fill > 1.5) { setZoom(fill); stage.scrollLeft = 0; }
+      }
+    };
     const open = (i, from) => {
       opener = from;
       box.classList.add('open');
@@ -272,6 +289,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const close = () => {
       box.classList.remove('open');
       document.body.classList.remove('lightbox-open');
+      setMax(false);
       if (opener) opener.focus();
     };
 
@@ -290,7 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (a === 'next') show(index + 1);
         if (a === 'in') setZoom(zoom + 0.5);
         if (a === 'out') setZoom(zoom - 0.5);
-        if (a === 'fit') setZoom(1);
+        if (a === 'max') setMax(!box.classList.contains('is-max'));
       } else if (e.target === box) {
         close(); // a click on the dimmed page, outside the card
       }
