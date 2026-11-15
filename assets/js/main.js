@@ -136,6 +136,71 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(type, 1000);
   }
 
+  // --- Product tour carousel ---
+  const track = document.querySelector('.shots-grid');
+  if (track) {
+    const slides = Array.from(track.querySelectorAll('.shot'));
+    track.classList.add('is-carousel');
+    track.setAttribute('role', 'region');
+    track.setAttribute('aria-roledescription', 'carousel');
+    track.setAttribute('aria-label', 'Product tour');
+    track.tabIndex = 0;
+
+    const controls = document.createElement('div');
+    controls.className = 'carousel-controls';
+    controls.innerHTML =
+      '<button type="button" class="carousel-btn" data-dir="-1" aria-label="Previous screen">&#8249;</button>' +
+      '<div class="carousel-dots"></div>' +
+      '<button type="button" class="carousel-btn" data-dir="1" aria-label="Next screen">&#8250;</button>';
+    track.insertAdjacentElement('afterend', controls);
+    const dotsBox = controls.querySelector('.carousel-dots');
+    const dots = slides.map((slide, i) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'carousel-dot';
+      dot.setAttribute('aria-label', 'Show ' + slide.querySelector('.shot-caption strong').textContent.trim());
+      dot.addEventListener('click', () => go(i));
+      dotsBox.appendChild(dot);
+      return dot;
+    });
+
+    let current = 0;
+    const centreOf = (slide) => slide.offsetLeft - track.offsetLeft + slide.offsetWidth / 2;
+    const mark = (i) => {
+      current = i;
+      slides.forEach((s, n) => s.classList.toggle('is-side', n !== i));
+      dots.forEach((d, n) => d.setAttribute('aria-current', n === i ? 'true' : 'false'));
+    };
+    const go = (i) => {
+      const n = (i + slides.length) % slides.length;
+      track.scrollTo({ left: centreOf(slides[n]) - track.clientWidth / 2 });
+      mark(n);
+    };
+    window.gnCarouselGo = go;
+
+    let ticking = false;
+    track.addEventListener('scroll', () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        ticking = false;
+        const mid = track.scrollLeft + track.clientWidth / 2;
+        let best = 0, dist = Infinity;
+        slides.forEach((s, n) => { const d = Math.abs(centreOf(s) - mid); if (d < dist) { dist = d; best = n; } });
+        if (best !== current) mark(best);
+      });
+    }, { passive: true });
+    controls.addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-dir]');
+      if (btn) go(current + Number(btn.dataset.dir));
+    });
+    track.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') { e.preventDefault(); go(current + 1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); go(current - 1); }
+    });
+    mark(0);
+  }
+
   // --- Screenshot viewer: opens in place, with zoom, instead of a new tab ---
   const shots = Array.from(document.querySelectorAll('.shot'));
   if (shots.length) {
@@ -210,7 +275,12 @@ document.addEventListener('DOMContentLoaded', () => {
       if (opener) opener.focus();
     };
 
-    shots.forEach((shot, i) => shot.addEventListener('click', (e) => { e.preventDefault(); open(i, shot); }));
+    shots.forEach((shot, i) => shot.addEventListener('click', (e) => {
+      e.preventDefault();
+      // A slide at the side of the carousel is brought to the middle first.
+      if (shot.classList.contains('is-side') && window.gnCarouselGo) { window.gnCarouselGo(i); return; }
+      open(i, shot);
+    }));
     box.addEventListener('click', (e) => {
       const act = e.target.closest('[data-act]');
       if (act) {

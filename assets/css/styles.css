@@ -1063,11 +1063,58 @@ img { max-width: 100%; height: auto; }
 .table-note { margin-top: 1rem; font-size: 0.85rem; color: var(--gray-400); text-align: center; }
 
 /* === PRODUCT TOUR === */
+/* A carousel: one screen in the middle, its neighbours peeking in at the sides. */
 .shots-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.75rem;
-  margin-top: 3.5rem;
+  --slide: min(940px, 84%);
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 3rem;
+  padding: 0.5rem 0 0.75rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+.shots-grid::-webkit-scrollbar { display: none; }
+/* Spacers so the first and the last screen can sit in the middle too. */
+.shots-grid::before, .shots-grid::after { content: ""; flex: 0 0 calc((100% - var(--slide)) / 2 - 1.5rem); }
+.shots-grid .shot {
+  flex: 0 0 var(--slide);
+  scroll-snap-align: center;
+  opacity: 1 !important;      /* slides are shown by the carousel, not by scroll reveal */
+  transform: none !important;
+  transition: opacity 0.35s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.shots-grid.is-carousel .shot.is-side { opacity: 0.38 !important; cursor: pointer; }
+.shots-grid.is-carousel .shot:not(.is-side) { box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45); border-color: rgba(249, 115, 22, 0.3); }
+.carousel-controls { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-top: 1.25rem; }
+.carousel-btn {
+  width: 2.75rem;
+  height: 2.75rem;
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
+  background: var(--dark-800);
+  color: var(--white);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+.carousel-btn:hover, .carousel-btn:focus-visible { border-color: rgba(249, 115, 22, 0.6); background: rgba(249, 115, 22, 0.12); outline: none; }
+.carousel-dots { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
+.carousel-dot { width: 0.6rem; height: 0.6rem; padding: 0; border: 0; border-radius: 999px; background: rgba(255, 255, 255, 0.22); cursor: pointer; transition: width 0.25s, background 0.25s; }
+.carousel-dot[aria-current="true"] { width: 1.75rem; background: var(--orange-500, #f97316); }
+.carousel-dot:focus-visible { outline: 2px solid #fb923c; outline-offset: 3px; }
+@media (max-width: 768px) {
+  .shots-grid { --slide: 88%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .shots-grid { scroll-behavior: auto; }
 }
 .shot {
   display: block;
